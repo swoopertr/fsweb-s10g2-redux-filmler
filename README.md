@@ -61,7 +61,7 @@ Bu projede, küçük bir film veritabanı içeren bir web uygulamasında çalı�
   - [ ] `movieActions.js`'de `addMovie` için bir action generator oluşturun.
   - [ ] Bir filmin eklenmesini tetikleyen componenti bulun ve `addMovie` action'ını bağlayın.
   - [ ] `addMovie`'yi çağırmak için gerekli event handlerı oluşturun ve bağlayın.
-  - [ ] Yeni bir film eklerken `id` değeri olarak `Date.now()` kullanın.
+  - [ ] Yeni bir film eklerken `id` değeri olarak `Date.now()` kullanın. //--?? GUID
   - [ ] Film eklendikten sonra filmler sayfasına yönlendirmek için `push('/movies/')` komutunu ekleyin.
 
 #### Favoriler reducerı oluşturun
