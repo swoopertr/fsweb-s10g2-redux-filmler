@@ -1,23 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
-
+import { Provider } from 'react-redux'
+import { legacy_createStore } from "redux";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 
-import { legacy_createStore as createStore } from "redux";
-import { Provider } from "react-redux";
-import reducer from "./reducers";
+import reducers from "./reducers";
 
-const store = createStore(reducer);
 
+const store = legacy_createStore(reducers)
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <Provider store={store}>
+    
+    <Provider store = {store}>
       <App />
     </Provider>
+    
   </BrowserRouter>
 );
 

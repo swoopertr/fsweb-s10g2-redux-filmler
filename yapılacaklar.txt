@@ -1,0 +1,5 @@
+User login componenti oluşturacaksınız
+login edince o user'ın favorilerini gösterecek
+
+bonus:
+    youtoube frame embed'i getirelim, ilgili filmin trailer'ını oynatsın

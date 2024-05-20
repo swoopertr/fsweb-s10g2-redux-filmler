@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { addMovie } from "./../actions/movieActions";
-import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-
+import { useDispatch } from "react-redux"
+import { addMovie } from "../actions/movieActions";
 const AddMovieForm = (props) => {
   const { push } = useHistory();
-  const addMovieDispatcher = useDispatch();
+  
+  const dispatcher = useDispatch();
+
   const idGenarator = () => {
     return Date.now();
   };
+  
   const [movie, setMovie] = useState({
     title: "",
     director: "",
@@ -28,10 +30,11 @@ const AddMovieForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const item = { ...movie, id: idGenarator() };
-    console.log("item", item);
-    addMovieDispatcher({ type: "ADD_MOVIE", payload: item });
-    push("/movies");
+    //debugger
+    let newMovie = {...movie, id: idGenarator()}
+    setMovie(newMovie);
+    dispatcher(addMovie(newMovie));
+    push('/movies');
   };
 
   return (
