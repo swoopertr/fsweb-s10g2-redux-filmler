@@ -109,3 +109,11 @@ Bu projede, küçük bir film veritabanı içeren bir web uygulamasında çalı�
 Tebrikler! 
 &nbsp;
 Projeyi başarıyla tamamladın 👏👏👏
+
+user bölümü ekleyerek her user için favori listesi 
+tezt box kullanıcı ekleme
+user seçme için bir alan
+
+bonus : 
+  movie detail componentinde youtube embedded kodu ile trailerları izleyebilelim
+  
