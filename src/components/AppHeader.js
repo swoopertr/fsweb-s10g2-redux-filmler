@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
 
 const AppHeader = (props) => {
-  const appTitle = useSelector(store=> store.appTitle);
+  const appTitle = useSelector(store=> store.movie.appTitle);
   const displayFavorites = true;
 
   return (

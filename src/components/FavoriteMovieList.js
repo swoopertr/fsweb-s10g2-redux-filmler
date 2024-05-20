@@ -1,9 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import {removeFavorite} from '../actions/favoritesActions';
 
 
 const FavoriteMovieList = (props) => {
-  const favorites = [];
+  const favorites = useSelector(store => store.favorites.favorites.Film)
+
+  const dispatcher = useDispatch()
+
+  const removeFavMovieHandler = (e) => {
+    const dataId = e.target.getAttribute('data-id');
+    console.log("data-id : ", dataId);
+    dispatcher(removeFavorite(dataId));
+  }
 
   return (
     <div className="flex-1 sm:max-w-[250px] p-5 pr-5 bg-white shadow rounded-md">
@@ -11,7 +21,12 @@ const FavoriteMovieList = (props) => {
       <div className="pt-3 text-sm">
         {
           favorites.map(movie => (
-            <Link key={movie.id} className="py-1 flex gap-2 justify-between" to={`/movies/${movie.id}`}>
+            <Link key={movie.id} data-id={movie.id} className="py-1 flex gap-2 justify-between" to=''
+              onClick={
+                (e)=>{
+                  e.preventDefault(); 
+                  dispatcher(removeFavorite(movie.id));
+              }} >
               {movie.title}
               <span className="material-icons hover:text-red-600 text-[18px]">remove_circle</span>
             </Link>

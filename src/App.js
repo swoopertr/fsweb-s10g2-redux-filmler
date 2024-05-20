@@ -1,17 +1,34 @@
 import React from "react";
 
 import { Route, Switch, Redirect } from "react-router-dom";
-
+import {useState, useEffect} from "react"
 import MovieList from './components/MovieList';
 import Movie from './components/Movie';
-
+import { useSelector } from "react-redux";
 import AppHeader from './components/AppHeader';
 
 import AddMovieForm from './components/AddMovieForm';
 import FavoriteMovieList from './components/FavoriteMovieList';
 
 const App = props => {
-  const displayFavorites = true;
+  const [displayFavorites, setDisplayFavorites] = useState(false);
+
+  const favList = useSelector(store => store.favorites.favorites.Film)
+
+  const checkIfFavIsEmpty = () => {
+    if (favList.length >= 1) {
+      setDisplayFavorites(true);
+    } else {
+      setDisplayFavorites(false);
+    }
+  };
+
+  useEffect(() => {
+    checkIfFavIsEmpty();
+  }, [favList]);
+
+  
+  
 
   return (
     <div>
