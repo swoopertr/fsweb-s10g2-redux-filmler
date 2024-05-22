@@ -6,10 +6,10 @@ export const toggleFavorites = () => {
   return ({ type: TOGGLE_FAVORITES });
 }
 
-export const addFavorite = (movie) => {
-  return ({ type: ADD_FAVORITE, payload: movie });
+export const addFavorite = (movie, user) => {
+  return ({ type: ADD_FAVORITE, payload: {...movie, user: user} });
 }
 
-export const removeFavorite = (id) => {
-  return ({ type: REMOVE_FAVORITE, payload: id });
+export const removeFavorite = (id, user) => {
+  return ({ type: REMOVE_FAVORITE, payload: id, user: user });
 }

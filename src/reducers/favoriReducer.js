@@ -18,9 +18,12 @@ const favoriReducer = (state = initialState, action) => {
         displayFavorites: state.displayFavorites ? false : true
       };
     case REMOVE_FAVORITE:
+      console.log("eski favoriler", state.favorites)
+      let newFavorites = [...state.favorites.filter(item => (Number(action.payload) !== item.id && item.user === action.user)), ...state.favorites.filter(item=> item.user !== action.user)]
+      console.log("favoriler", newFavorites)
     return {
         ...state,
-        favorites: state.favorites.filter(item => (Number(action.payload) !== item.id))
+        favorites: newFavorites
     };
 
     default:

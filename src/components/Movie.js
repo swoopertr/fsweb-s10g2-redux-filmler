@@ -12,7 +12,8 @@ const Movie = (props) => {
   const movies = useSelector(store => store.moviesReducer.movies)
   const movie = movies.find(movie => movie.id === Number(id));
   const favoriteMovies = useSelector(store => store.favoritesReducer.favorites);
-  const movieInFavorite = favoriteMovies.find(movie => movie.id === Number(id));
+  const user = document.getElementById("userList").value
+  const movieInFavorite = favoriteMovies.find(movie => movie.id === Number(id) && movie.user === user);
 
   const deleteHandler = () => {
     dispatcher(deleteMovie(id));
@@ -22,9 +23,10 @@ const Movie = (props) => {
   const favoriteHandler = () => {
     if (movieInFavorite) {
       //çıkar reducer'ı gelecek
-      dispatcher(removeFavorite(id));
+      dispatcher(removeFavorite(id, user));
     } else {
-      dispatcher(addFavorite(movie));
+      
+      dispatcher(addFavorite(movie, user));
     }
     
   }

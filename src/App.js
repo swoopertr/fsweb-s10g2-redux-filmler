@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 import { Route, Switch, Redirect } from "react-router-dom";
 
@@ -9,8 +9,16 @@ import AppHeader from './components/AppHeader';
 import { useSelector } from "react-redux";
 import AddMovieForm from './components/AddMovieForm';
 import FavoriteMovieList from './components/FavoriteMovieList';
+import AddUserForm from "./components/AddUserForm";
 
 const App = props => {
+  const [userList, setUserList] = useState([])
+  const [activeUser, setActiveUser] = useState(null)
+  
+  useEffect(()=> {
+    let users = JSON.parse(localStorage.getItem("userList")).users
+    setUserList(users);
+  },[])
   const displayFavorites = useSelector(store => store.favoritesReducer.displayFavorites);
 
   return (
@@ -20,13 +28,16 @@ const App = props => {
       </nav>
 
       <div className="max-w-4xl mx-auto px-3 pb-4">
-        <AppHeader />
+        <AppHeader userList = {userList} setActiveUser = {setActiveUser}/>
         <div className="flex flex-col sm:flex-row gap-4">
-          {displayFavorites && <FavoriteMovieList />}
+          {displayFavorites && <FavoriteMovieList activeUser = {activeUser} />}
 
           <Switch>
             <Route exact path="/movies/add">
               <AddMovieForm />
+            </Route>
+            <Route exact path="/movies/newuser">
+              <AddUserForm />
             </Route>
 
             <Route path="/movies/:id">
