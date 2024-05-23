@@ -7,6 +7,7 @@ const AppHeader = (props) => {
   const {userList, setActiveUser} = props
   const dispatcher = useDispatch()
   const favoritesDisplayHandler = () => {
+
     dispatcher(toggleFavorites())
   }
   const handleUserChange = () => {
@@ -21,10 +22,10 @@ const AppHeader = (props) => {
       <h2 className='text-zinc-600'>{appTitle}</h2>
       <div className="flex items-center gap-2">
         <select id='userList' onChange={handleUserChange}>
-          <option selected value={"default"}>Choose User</option>
-          {userList && userList.map(user => {
+          <option defaultValue={"default"}>Choose User</option>
+          {userList && userList.map((user,index) => {
             return(
-              <option value={user}>{user}</option>
+              <option key={user} value={user}>{user}</option>
             )
           })}
         </select>

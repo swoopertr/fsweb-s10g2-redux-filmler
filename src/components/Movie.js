@@ -16,6 +16,7 @@ const Movie = (props) => {
   const movieInFavorite = favoriteMovies.find(movie => movie.id === Number(id) && movie.user === user);
 
   const deleteHandler = () => {
+  
     dispatcher(deleteMovie(id));
     push('/movies');
   }
@@ -23,9 +24,10 @@ const Movie = (props) => {
   const favoriteHandler = () => {
     if (movieInFavorite) {
       //çıkar reducer'ı gelecek
+      console.log('remove fav movie')
       dispatcher(removeFavorite(id, user));
     } else {
-      
+      console.log('add fav movie')
       dispatcher(addFavorite(movie, user));
     }
     

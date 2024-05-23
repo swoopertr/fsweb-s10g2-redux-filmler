@@ -16,7 +16,11 @@ const App = props => {
   const [activeUser, setActiveUser] = useState(null)
   
   useEffect(()=> {
-    let users = JSON.parse(localStorage.getItem("userList")).users
+    let valueFromLS = localStorage.getItem("userList");
+    if(valueFromLS == ""){
+      valueFromLS ='{"users": []}'
+    }
+    let users = JSON.parse(valueFromLS).users
     setUserList(users);
   },[])
   const displayFavorites = useSelector(store => store.favoritesReducer.displayFavorites);

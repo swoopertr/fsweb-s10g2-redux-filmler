@@ -13,6 +13,7 @@ const favoriReducer = (state = initialState, action) => {
         favorites: [...state.favorites, action.payload],
       };
     case TOGGLE_FAVORITES:
+      debugger;
       return {
         ...state,
         displayFavorites: state.displayFavorites ? false : true

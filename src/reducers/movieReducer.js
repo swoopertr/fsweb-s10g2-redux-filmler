@@ -10,7 +10,11 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
 
     case DELETE_MOVIE:
+      
       console.log('DELETE_MOVIE reducer runs');
+      if(action.payload.title !== undefined){
+        //...
+      }
       return {
         ...state,
         movies: state.movies.filter(item => (Number(action.payload) !== item.id))

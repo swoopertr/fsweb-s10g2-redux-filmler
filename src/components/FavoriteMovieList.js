@@ -9,6 +9,7 @@ const FavoriteMovieList = (props) => {
   const userFavorites = favorites.filter(item => item.user === activeUser)
   const dispatcher = useDispatch()
   const removeHandler = (id) => {
+
     dispatcher(removeFavorite(id, activeUser))
   }
   return (

@@ -33,6 +33,7 @@ const AddMovieForm = (props) => {
     //debugger
     let newMovie = {...movie, id: idGenarator()}
     setMovie(newMovie);
+    
     dispatcher(addMovie(newMovie));
     push('/movies');
   };
